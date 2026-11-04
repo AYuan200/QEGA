@@ -1,0 +1,14 @@
+experiment: clustering
+algorithm: sweep
+output: results/clustering.csv
+instance_dir: results/instances
+base_config: configs/base.yaml
+baseline_config: configs/baselines.yaml
+runs: 1
+seeds: [20260001]
+instances:
+  - {id: N20_K10_M8_RRR_small, generate: {N: 20, K: 10, M: 8, scheme: RRR, seed: 20264020}}
+  - {id: N30_K10_M8_RRR_small, generate: {N: 30, K: 10, M: 8, scheme: RRR, seed: 20264030}}
+  - {id: N50_K10_M8_RRR_small, generate: {N: 50, K: 10, M: 8, scheme: RRR, seed: 20264050}}
+param_grid:
+  - {label: final}

@@ -1,0 +1,19 @@
+experiment: uav_ablation
+algorithm: qega
+output: results/uav_ablation.csv
+instance_dir: results/instances
+base_config: configs/base.yaml
+baseline_config: configs/baselines.yaml
+fe_max: 50000
+runs: 1
+seeds: [20260001]
+instance_grid:
+  master_seed: 20261104
+  N: [500, 1000, 2000]
+  K: [20]
+  M: [35]
+  schemes: [RRR]
+  replicates: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+  drone_ratios: [0.0, 0.1, 0.2, 0.3, 0.4]
+param_grid:
+  - {label: final}

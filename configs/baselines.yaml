@@ -1,0 +1,18 @@
+# Final-manuscript baseline settings. Stochastic algorithms share FE_max=50000.
+qsa:
+  initial_temperature: 100.0
+  cooling_rate: 0.995
+
+qpso:
+  N_p: 50
+  inertia: 0.9
+  cognitive: 2.0
+  social: 2.0
+
+sga:
+  N_p: 50
+  p_c: 0.9
+  p_m: 0.1
+
+sweep:
+  two_opt_max_passes: 2

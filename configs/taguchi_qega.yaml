@@ -1,0 +1,29 @@
+experiment: taguchi
+algorithm: qega
+output: results/taguchi_qega.csv
+instance_dir: results/instances
+base_config: configs/base.yaml
+baseline_config: configs/baselines.yaml
+fe_max: 50000
+runs: 10
+seeds: [20261001, 20261002, 20261003, 20261004, 20261005, 20261006, 20261007, 20261008, 20261009, 20261010]
+instances:
+  - id: N1000_K20_M35_RRR_calibration
+    generate: {N: 1000, K: 20, M: 35, scheme: RRR, seed: 20260930}
+param_grid:
+  - {label: L16_01, n: 10, N_p: 50, p_c: 0.6, p_m: 0.05, alpha: 0.2}
+  - {label: L16_02, n: 10, N_p: 100, p_c: 0.7, p_m: 0.10, alpha: 0.4}
+  - {label: L16_03, n: 10, N_p: 150, p_c: 0.8, p_m: 0.15, alpha: 0.6}
+  - {label: L16_04, n: 10, N_p: 200, p_c: 0.9, p_m: 0.20, alpha: 0.8}
+  - {label: L16_05, n: 15, N_p: 50, p_c: 0.7, p_m: 0.15, alpha: 0.8}
+  - {label: L16_06, n: 15, N_p: 100, p_c: 0.6, p_m: 0.20, alpha: 0.6}
+  - {label: L16_07, n: 15, N_p: 150, p_c: 0.9, p_m: 0.05, alpha: 0.4}
+  - {label: L16_08, n: 15, N_p: 200, p_c: 0.8, p_m: 0.10, alpha: 0.2}
+  - {label: L16_09, n: 20, N_p: 50, p_c: 0.8, p_m: 0.20, alpha: 0.4}
+  - {label: L16_10, n: 20, N_p: 100, p_c: 0.9, p_m: 0.15, alpha: 0.2}
+  - {label: L16_11, n: 20, N_p: 150, p_c: 0.6, p_m: 0.10, alpha: 0.8}
+  - {label: L16_12, n: 20, N_p: 200, p_c: 0.7, p_m: 0.05, alpha: 0.6}
+  - {label: L16_13, n: 25, N_p: 50, p_c: 0.9, p_m: 0.10, alpha: 0.6}
+  - {label: L16_14, n: 25, N_p: 100, p_c: 0.8, p_m: 0.05, alpha: 0.8}
+  - {label: L16_15, n: 25, N_p: 150, p_c: 0.7, p_m: 0.20, alpha: 0.2}
+  - {label: L16_16, n: 25, N_p: 200, p_c: 0.6, p_m: 0.15, alpha: 0.4}

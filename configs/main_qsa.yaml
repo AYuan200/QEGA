@@ -1,0 +1,14 @@
+experiment: main
+algorithm: qsa
+output: results/main.csv
+instance_dir: results/instances
+base_config: configs/base.yaml
+baseline_config: configs/baselines.yaml
+fe_max: 50000
+runs: 1
+seeds: [20260001]
+instance_grid:
+  master_seed: 20261104
+  replicates: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+param_grid:
+  - {label: final}

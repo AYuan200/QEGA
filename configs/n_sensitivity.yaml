@@ -1,0 +1,25 @@
+experiment: n_sensitivity
+algorithm: qega
+output: results/n_sensitivity.csv
+instance_dir: results/instances
+base_config: configs/base.yaml
+baseline_config: configs/baselines.yaml
+fe_max: 50000
+runs: 1
+seeds: [20260001]
+instance_grid:
+  master_seed: 20261104
+  N: [500, 1000, 2000, 5000]
+  K: [20]
+  M: [35]
+  schemes: [RRR]
+  replicates: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+param_grid:
+  - {label: n5, n: 5}
+  - {label: n10, n: 10}
+  - {label: n15, n: 15}
+  - {label: n20, n: 20}
+  - {label: n25, n: 25}
+  - {label: n30, n: 30}
+  - {label: n40, n: 40}
+  - {label: n50, n: 50}

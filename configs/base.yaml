@@ -1,0 +1,11 @@
+# Final-manuscript settings: service time and QEGA parameters.
+service:
+  t_station_min: 5.0
+
+qega:
+  N_p: 50
+  p_c: 0.8
+  p_m: 0.1
+  alpha: 0.4
+  FE_max: 50000
+  init_2opt_passes: 2

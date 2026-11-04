@@ -1,0 +1,33 @@
+# QEGA 算例生成器冻结配置（SPEC §5 表3/4/5 + §6-M1）
+# 注：服务时间 T 不属于生成器参数，统一在 configs/base.yaml 取值。
+# 单位：距离 km，重量 kg，速度 km/h，时间 min
+
+map:
+  radius_km: 30.0
+  min_station_distance_km: 0.5   # 施加在欧氏距离 E 上
+  # SPEC §2 修订：每对无序站点采样对称道路系数 ρ~U[1.2,1.4]（算例种子驱动）；
+  # 地面距离 D=ρ·E，无人机距离 D′=E；D/D′ 随算例落盘，各模块读取同一来源。
+  road_factor_uniform: [1.2, 1.4]
+
+fleet:  # SPEC 表5（aerial=true 读 D′=E，false 读 D=ρ·E）
+  drone:              {proportion: 0.20, capacity_kg: 5.0,   speed_kmh: 60.0, range_km: 20.0,  aerial: true}
+  mini_van:           {proportion: 0.30, capacity_kg: 150.0, speed_kmh: 35.0, range_km: 300.0, aerial: false}
+  electric_tricycle:  {proportion: 0.50, capacity_kg: 50.0,  speed_kmh: 25.0, range_km: 80.0,  aerial: false}
+
+orders:  # SPEC §5 订单采样（R/U 两方案 × 3 参数 → 2×2×2）
+  packages_per_order: {min: 1, max: 5, R: {dist: truncated_poisson, lambda: 1.4}, U: {dist: discrete_uniform}}
+  package_weight_kg:  {min: 0.1, max: 20.0, R: {dist: truncated_lognormal, mu: 0.5, sigma: 1.0}, U: {dist: continuous_uniform}}
+  delivery_split:     {R: {dist: binomial, p: 0.5}, U: {dist: discrete_uniform, min: 0}}
+
+scale_factors:  # 1000 factor combinations x 10 independent instances = 10000 instances
+  N: [200, 500, 1000, 2000, 5000]
+  K: [10, 15, 20, 25, 30]
+  M: [8, 18, 35, 65, 150]
+  schemes: [R, U]
+  independent_instances_per_combination: 10
+
+feasibility:  # SPEC §6-M1：每个订单至少一种车型载重+航程双重可行，否则整单重采样
+  enforce_capacity_and_range: true
+
+degenerate:  # SPEC §5：退化组合打标记（审稿意见8）
+  mark_when: {N: 200, M: 150}
